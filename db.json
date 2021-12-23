@@ -1,0 +1,51 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "firstName": "ANKIT",
+      "lastName": "SINGH",
+      "address": "217a, New AG Colony Road, AG Colony, Ranchi, Jharkhand, India",
+      "birthDate": "06-09-1988",
+      "mobile": "9973413241",
+      "city": "Ranchi"
+    },
+    {
+      "id": 2,
+      "firstName": "a",
+      "lastName": "SINGH",
+      "address": "217a, New AG Colony Road, AG Colony, Ranchi, Jharkhand, India",
+      "birthDate": "6700",
+      "mobile": "9973413241",
+      "city": "Ranchi"
+    },
+    {
+      "id": 3,
+      "firstName": "ANKITkumar ",
+      "lastName": "SINGH",
+      "address": "217a, New AG Colony Road, AG Colony, Ranchi, Jharkhand, India",
+      "birthDate": "06-Nov-1998",
+      "mobile": "9973413241",
+      "city": "Ranchi"
+    },
+    {
+      "id": 4,
+      "firstName": "ANKIT",
+      "lastName": "SINGH",
+      "address": "217a, New AG Colony Road, AG Colony, Ranchi, Jharkhand, India",
+      "birthDate": null,
+      "mobile": "9973413241",
+      "city": "Ranchi"
+    }
+  ],
+  "signupManager": [
+    {
+      "email": "ankit@gmail.com",
+      "firstName": "Ankit",
+      "lastName": "Singh",
+      "password": "test@123",
+      "address": "Bihar",
+      "birthdate": "06-nov-2020",
+      "id": 1
+    }
+  ]
+}

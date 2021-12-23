@@ -1,0 +1,125 @@
+<nav class="navbar ">
+  <div class="container-fluid">
+    <h1 style="color: aliceblue;">Employee Data</h1>
+    <div class="d-flex">
+      <button (click)="clickAddEmp()" type="button" data-toggle="modal" data-target="#exampleModal" class="btn">Add
+        Employee</button>
+    </div>
+  </div>
+</nav>
+
+<table class="table mt-3">
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">First Name</th>
+      <th scope="col">Last Name</th>
+      <th scope="col">Address</th>
+      <th scope="col">Birth Date</th>
+      <th scope="col">Mobile</th>
+      <th scope="col">City</th>
+      <th scope="col">Action</th>
+
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let row of empData">
+      <td>{{row.id}}</td>
+      <td>{{row.firstName}}</td>
+      <td>{{row.lastName}}</td>
+      <td>{{row.address}}</td>
+      <td>{{row.birthDate}}</td>
+      <td>{{row.mobile}}</td>
+      <td>{{row.city}}</td>
+
+      <td>
+        <button (click)="onUpdate(row)" type="button" data-toggle="modal" data-target="#exampleModal"
+          class="btn btn-info">Edit</button>
+        <button (click)="deleteEmployee(row)" class="btn btn-danger mx-3">Delete</button>
+      </td>
+
+    </tr>
+  </tbody>
+</table>
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="exampleModalLabel">Employee Details</h2>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="addForm">
+          <div class="form-group">
+            <label for="exampleInputEmail1">First Name</label>
+            <input type="firstName" class="form-control" id="firstName" formControlName="firstName"
+              aria-describedby="firstNameHelp" placeholder="Enter First Name" required
+              [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }">
+            <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
+              <div *ngIf="f.firstName.errors.required">First Name is required</div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="exampleInputEmail1">Last Name</label>
+            <input type="lastName" class="form-control" id="lastName" formControlName="lastName"
+              aria-describedby="lastNameHelp" placeholder="Enter Last Name" required
+              [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }">
+            <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
+              <div *ngIf="f.lastName.errors.required">Last Name is required</div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="exampleInputEmail1">Address</label>
+            <input type="address" class="form-control" id="address" formControlName="address" aria-describedby="address"
+              placeholder="Enter Address" required [ngClass]="{ 'is-invalid': submitted && f.address.errors }">
+            <div *ngIf="submitted && f.address.errors" class="invalid-feedback">
+              <div *ngIf="f.address.errors.required">Address is required</div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="exampleInputEmail1">Birth Date</label>
+            <input type="birthDate" class="form-control" id="birthDate" formControlName="birthDate"
+              placeholder="Enter BirthDate" required [ngClass]="{ 'is-invalid': submitted && f.birthDate.errors }">
+            <div *ngIf="submitted && f.birthDate.errors" class="invalid-feedback">
+              <div *ngIf="f.birthDate.errors.required">Birth Date is required</div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="exampleInputPassword1">Mobile</label>
+            <input type="mobile" class="form-control" formControlName="mobile" id="mobile" placeholder="Enter Mobile"
+              required [ngClass]="{ 'is-invalid': submitted && f.mobile.errors }">
+            <div *ngIf="submitted && f.mobile.errors" class="invalid-feedback">
+              <div *ngIf="f.mobile.errors.required">Mobile is required</div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="exampleInputPassword1">City</label>
+            <input type="city" class="form-control" formControlName="city" id="city" placeholder="Enter City" required
+              [ngClass]="{ 'is-invalid': submitted && f.city.errors }">
+            <div *ngIf="submitted && f.city.errors" class="invalid-feedback">
+              <div *ngIf="f.city.errors.required">City is required</div>
+            </div>
+          </div>
+
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="cancel" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button *ngIf="showAdd" (click)="postEmployeeDetails()" type="button" class="btn btn-primary">Add</button>
+        <button *ngIf="showUpdate" (click)="updateEmployee()" type="button" class="btn btn-primary">Update</button>
+      </div>
+    </div>
+  </div>
+</div>

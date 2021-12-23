@@ -1,0 +1,76 @@
+// .login-container {
+//   align-items: center;
+//   display: flex;
+//   height: 100%;
+//   background-color: rgb(230, 224, 224);
+//   font-family: "Calibri";
+// }
+// .mat-toolbar {
+//   color: white;
+//   text-align: center;
+//   justify-content: center;
+//   font-family: "Calibri";
+// }
+// form {
+//   font-family: "Calibri";
+//   width: 100%;
+// }
+// .login-content {
+//   width: 500px;
+//   display: block;
+//   margin: 0 auto;
+//   font-family: "Calibri";
+// }
+
+:host {
+  .mat-toolbar {
+    color: white;
+    text-align: center;
+    justify-content: center;
+    font-family: "Calibri";
+    justify-content: center;
+    margin-bottom: 30px;
+    font-size: 25px;
+    background-color: #64c8cc;
+  }
+  form {
+    font-family: "Calibri";
+    width: 100%;
+  }
+  mat-form-field {
+    width: 100%;
+    font-family: "Calibri";
+    line-height: initial;
+  }
+  button {
+    width: 100px;
+    margin-top: 10px;
+    background-color: #64c8cc;
+  }
+  mat-icon {
+    margin-right: 10px;
+  }
+  a{
+    color: black;
+    font-size: 15px;
+    font-weight: 500px;
+  }
+  input{
+    font-size: 17px;
+    font-weight: 500;
+  }
+}
+
+.login-container {
+  align-items: center;
+  display: flex;
+  height: 100%;
+  background-color: rgb(230, 224, 224);
+  font-family: "Calibri";
+  .login-content {
+    width: 500px;
+    display: block;
+    margin: 0 auto;
+    font-family: "Calibri";
+  }
+}

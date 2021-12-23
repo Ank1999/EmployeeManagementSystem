@@ -1,0 +1,12 @@
+<app-header flexLayout="column"></app-header>
+
+<div flexLayout="row" fxFlex>
+    <div fxFlex ="15">
+        <app-side-bar fxFlex></app-side-bar>
+    </div>
+    <div fxFlex ="85" class="content">
+        <router-outlet></router-outlet>
+    </div>
+</div>
+
+<app-footer flexLayout="column"></app-footer>
