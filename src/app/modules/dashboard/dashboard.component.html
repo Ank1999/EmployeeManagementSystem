@@ -88,11 +88,20 @@
 
           <div class="form-group">
             <label for="exampleInputEmail1">Birth Date</label>
-            <input type="birthDate" class="form-control" id="birthDate" formControlName="birthDate"
-              placeholder="Enter BirthDate" required [ngClass]="{ 'is-invalid': submitted && f.birthDate.errors }">
-            <div *ngIf="submitted && f.birthDate.errors" class="invalid-feedback">
-              <div *ngIf="f.birthDate.errors.required">Birth Date is required</div>
+            <div class="input-group">
+              <input type="birthDate" class="form-control" id="birthDate" formControlName="birthDate"
+                placeholder="Enter BirthDate" required [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker"
+                [ngClass]="{ 'is-invalid': submitted && f.birthDate.errors }">
+
+              <div class="input-group-append">
+                <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button"><i
+                    class="fa fa-calendar"></i></button>
+              </div> 
+              <div *ngIf="submitted && f.birthDate.errors" class="invalid-feedback">
+                <div *ngIf="f.birthDate.errors.required">Birth Date is required</div>
+              </div> 
             </div>
+
           </div>
 
           <div class="form-group">

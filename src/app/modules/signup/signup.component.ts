@@ -42,7 +42,7 @@ export class SignupComponent implements OnInit {
           console.log(res)
           alert("SignUp Successfull");
           this.signupForm.reset();
-          this.router.navigate(['/login']);
+          this.router.navigate(['/manager/login']);
 
 
         }, err => {

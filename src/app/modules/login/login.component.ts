@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { EmailValidator, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthenticationService } from 'src/app/authentication.service';
 
 @Component({
   selector: 'app-login',
@@ -15,40 +16,54 @@ export class LoginComponent implements OnInit {
   loading = false;
   submitted = false;
 
+  
   constructor(private router: Router,
     public formBuilder: FormBuilder,
-    private httpClient: HttpClient) { }
+    private httpClient: HttpClient,
+    private _auth: AuthenticationService,
+  ) {
+
+  }
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
-      password:  ['', [Validators.required, Validators.minLength(6)]],
+      password: ['', [Validators.required, Validators.minLength(6)]],
     })
+
   }
 
   get f() { return this.loginForm.controls; }
 
 
-  login(){
+  login() {
+    localStorage.clear(); 
+
     this.submitted = true;
     this.httpClient.get<any>("http://localhost:3000/signupManager")
       .subscribe(res => {
 
-        const user = res.find((a:any)=>{
-          return a.email === this.loginForm.value.email && a.password === this.loginForm.value.password 
+        const user = res.find((a: any) => {
+          return a.email === this.loginForm.value.email && a.password === this.loginForm.value.password
         });
 
-        if(user){
+        if (user) {
+          localStorage.setItem("isLoggedin","true");
           alert("Login Successfull");
           this.loginForm.reset();
-          this.router.navigate(['/']);
-        }else{
+          this.router.navigate(['/user/dash']);
+        } else {
           alert("User not found!!")
+          localStorage.clear();
         }
       }, err => {
         alert("Something went wrong!!")
-      } )
+      })
 
   }
+
+ 
+
+ 
 
 }

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuardGuard } from './auth-guard.guard';
 import { DefaultComponent } from './layout/default/default.component';
 import { FullwidthComponent } from './layout/fullwidth/fullwidth.component';
 import { FullwidthModule } from './layout/fullwidth/fullwidth.module';
@@ -8,14 +9,14 @@ import { LoginComponent } from './modules/login/login.component';
 import { SignupComponent } from './modules/signup/signup.component';
 
 const routes: Routes = [{
-  path: '',
+  path: 'user',
   component: DefaultComponent,
   children: [{
-    path: '',
-    component: DashboardComponent
-  }]
+    path: 'dash',
+    component: DashboardComponent, canActivate: [AuthGuardGuard]
+  },]
 }, {
-  path: '',
+  path: 'manager',
   component: FullwidthComponent,
   children: [{
     path: 'login',
@@ -25,7 +26,8 @@ const routes: Routes = [{
     path: 'register',
     component: SignupComponent
   }]
-}];
+},
+{ path: '', redirectTo: 'manager/login', pathMatch: 'full' }];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

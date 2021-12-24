@@ -7,6 +7,7 @@ import { FlexLayoutModule, FlexModule } from '@angular/flex-layout';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { FormsModule } from '@angular/forms';
     SharedModule,
     HttpClientModule,
     FormsModule,
+    NgbModule
   ],
 })
 export class DefaultModule { }

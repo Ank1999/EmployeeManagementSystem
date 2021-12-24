@@ -7,6 +7,8 @@ import { DefaultModule } from './layout/default/default.module';
 import { FullwidthModule } from './layout/fullwidth/fullwidth.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgbDatepickerModule, NgbTimepickerModule } from '@ng-bootstrap/ng-bootstrap';
+import { AuthenticationService } from './authentication.service';
+import { DatePipe } from '@angular/common';
 
 
 @NgModule({
@@ -26,7 +28,7 @@ import { NgbDatepickerModule, NgbTimepickerModule } from '@ng-bootstrap/ng-boots
   exports:[
     NgbModule
   ],
-  providers: [],
+  providers:[AuthenticationService,DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

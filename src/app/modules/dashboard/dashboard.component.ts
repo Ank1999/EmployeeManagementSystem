@@ -1,3 +1,4 @@
+import { DatePipe } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -18,11 +19,11 @@ export class DashboardComponent implements OnInit {
 
   empObj: EmployeeModel = new EmployeeModel();
 
-  pageSize = 25;
+  model: any;
 
   empData !: any;
 
-  page = 4;
+  todayDate : Date = new Date();
 
   showAdd !: boolean;
   showUpdate !: boolean;
@@ -39,6 +40,7 @@ export class DashboardComponent implements OnInit {
   }
 
   get f() { return this.addForm.controls; }
+
 
   ngOnInit(): void {
     this.addForm = this.formBuilder.group({

@@ -7,6 +7,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { LoginComponent } from 'src/app/modules/login/login.component';
 import { SignupComponent } from 'src/app/modules/signup/signup.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { AuthenticationService } from 'src/app/authentication.service';
 
 
 
@@ -23,6 +24,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     SharedModule,
     HttpClientModule
   ],
+ 
  
 })
 export class FullwidthModule { }
