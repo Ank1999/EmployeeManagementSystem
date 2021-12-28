@@ -1,83 +1,29 @@
 {
   "posts": [
     {
-      "id": 7,
+      "id": 1,
       "firstName": "ANKIT",
-      "lastName": "SINGH",
-      "address": "217a, New AG Colony Road, AG Colony, Ranchi, Jharkhand, India",
-      "birthDate": "04-12-2021",
+      "lastName": "Singh",
+      "address": "saran,bihar,india",
+      "birthDate": "11-11-2021",
       "mobile": "9973413241",
-      "city": "Ranchi"
+      "city": "gdf"
     },
     {
-      "id": 8,
-      "firstName": "ANK",
-      "lastName": "SINGH",
-      "address": "217a, New AG Colony Road, AG Colony, Ranchi, Jharkhand, India",
-      "birthDate": "26-12-2021",
-      "mobile": "9973413241",
-      "city": "Ranchi"
-    },
-    {
-      "id": 9,
-      "firstName": "ANKIT",
-      "lastName": "SINGH",
-      "address": "217a, New AG Colony Road, AG Colony, Ranchi, Jharkhand, India",
-      "birthDate": "04-12-2021",
-      "mobile": "9973413241",
-      "city": "Ranchi"
-    },
-    {
-      "id": 10,
-      "firstName": "ANKIT",
-      "lastName": "SINGH",
-      "address": "217a, New AG Colony Road, AG Colony, Ranchi, Jharkhand, India",
-      "birthDate": "11-12-2021",
-      "mobile": "9973413241",
-      "city": "Ranchi"
-    },
-    {
-      "id": 11,
-      "firstName": "ANKIT",
-      "lastName": "SINGH",
-      "address": "217a, New AG Colony Road, AG Colony, Ranchi, Jharkhand, India",
+      "id": 2,
+      "firstName": "Ayush",
+      "lastName": "Srivastava",
+      "address": "chapra,bihar",
       "birthDate": "10-12-2021",
-      "mobile": "9973413241",
-      "city": "Ranchi"
+      "mobile": "1234567890",
+      "city": "chapra"
     },
     {
-      "id": 12,
-      "firstName": "ANKIT",
-      "lastName": "SINGH",
-      "address": "217a, New AG Colony Road, AG Colony, Ranchi, Jharkhand, India",
-      "birthDate": "16-12-2021",
-      "mobile": "9973413241",
-      "city": "Ranchi"
-    },
-    {
-      "id": 13,
+      "id": 3,
       "firstName": "ANKIT",
       "lastName": "SINGH",
       "address": "217a, New AG Colony Road, AG Colony, Ranchi, Jharkhand, India",
       "birthDate": "03-12-2021",
-      "mobile": "9973413241",
-      "city": "Ranchi"
-    },
-    {
-      "id": 14,
-      "firstName": "ANKIT",
-      "lastName": "SINGH",
-      "address": "217a, New AG Colony Road, AG Colony, Ranchi, Jharkhand, India",
-      "birthDate": "05-12-2021",
-      "mobile": "9973413241",
-      "city": "Ranchi"
-    },
-    {
-      "id": 15,
-      "firstName": "ANKIT",
-      "lastName": "SINGH",
-      "address": "217a, New AG Colony Road, AG Colony, Ranchi, Jharkhand, India",
-      "birthDate": "15-12-2021",
       "mobile": "9973413241",
       "city": "Ranchi"
     }
@@ -91,15 +37,6 @@
       "address": "Bihar",
       "birthdate": "06-nov-2020",
       "id": 1
-    },
-    {
-      "email": "A",
-      "firstName": "Ank",
-      "lastName": "Rajput",
-      "password": "1234567",
-      "address": "pune,bihar",
-      "birthdate": "2021-12-22T18:30:00.000Z",
-      "id": 2
     }
   ]
 }
