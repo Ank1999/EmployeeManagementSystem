@@ -12,7 +12,7 @@ export class AuthGuardGuard implements CanActivate {
   
     if(!(localStorage.getItem("isLoggedin") === "true")){
       this._router.navigate(['/manager/login'])
-      return false
+      return false;
     }else{
       return true;
     }

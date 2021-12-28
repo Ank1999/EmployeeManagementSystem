@@ -3,30 +3,34 @@
         <mat-card>
             <mat-toolbar class="login-toolbar">Login</mat-toolbar>
 
-           <form [formGroup]="loginForm" (ngSubmit)="login()">
-            <mat-form-field appearance="outline">
-                <mat-icon matPrefix>email</mat-icon>
-                <input formControlName="email" autofocus type="tel" matInput placeholder="Email" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
-                <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
-                    <div *ngIf="f.email.errors.required">Email is required</div>
-                </div>
-            </mat-form-field>
+            <form [formGroup]="loginForm" (ngSubmit)="login()">
+                <mat-form-field appearance="outline">
+                    <mat-icon matPrefix>email</mat-icon>
+                    <input formControlName="email" autofocus type="tel" matInput placeholder="Email"
+                        [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+                    <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                        <div *ngIf="f.email.errors.required">Email is required</div>
+                        <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+                    </div>
+                   
+                </mat-form-field>
 
-            <mat-form-field appearance="outline">
-                <mat-icon matPrefix>lock</mat-icon>
-                <input formControlName="password" type="password" autocomplete="false" matInput placeholder="Password" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
-                <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
-                    <div *ngIf="f.password.errors.required">Password is required</div>
-                </div>
-            </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-icon matPrefix>lock</mat-icon>
+                    <input formControlName="password" type="password" autocomplete="false" matInput
+                        placeholder="Password" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+                    <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                        <div *ngIf="f.password.errors.required">Password is required</div>
+                    </div>
+                </mat-form-field>
 
-            <button  type="submit" mat-raised-button color="primary" style="font-family: Calibri; font-size: 16px;"
-                >Login
-            </button> 
-           </form>
+                <button type="submit" mat-raised-button color="primary"
+                    style="font-family: Calibri; font-size: 16px;">Login
+                </button>
+            </form>
 
             <div style="margin-top: 10px;">
-            <a [routerLinkActive]="'active'" [routerLink]="['/manager/register']">New User? Click to SignUp!!</a>
+                <a [routerLinkActive]="'active'" [routerLink]="['/manager/register']">New User? Click to SignUp!!</a>
             </div>
         </mat-card>
     </div>

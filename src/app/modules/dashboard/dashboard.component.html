@@ -20,13 +20,11 @@
         <th scope="col">Mobile</th>
         <th scope="col">City</th>
         <th scope="col">Action</th>
-
       </tr>
     </thead>
 
     <tbody>
       <tr *ngFor="let row of empData">
-
         <td>{{row.id}}</td>
         <td>{{row.firstName}}</td>
         <td>{{row.lastName}}</td>
@@ -40,10 +38,8 @@
             class="btn btn-info">Edit</button>
           <button (click)="deleteEmployee(row)" class="btn btn-danger mx-3">Delete</button>
         </td>
-
       </tr>
     </tbody>
-
   </table>
 </div>
 
@@ -96,7 +92,9 @@
             <label for="exampleInputEmail1">Birth Date</label>
             <div class="input-group">
               <input type="calender" class="form-control" (dateSelect)="onDateSelect($event)" id="birthDate"
-                formControlName="birthDate" placeholder="Enter BirthDate" required ngbDatepicker #d="ngbDatepicker"
+                formControlName="birthDate" [(ngModel)]="model" (ngModelChange)="select(model)"
+                placeholder="Enter BirthDate" required ngbDatepicker #d="ngbDatepicker"
+                [minDate]="{day: 1, month: 1,year: 1960 }" [maxDate]="{day: 28, month: 11, year: 2021}"
                 [ngClass]="{ 'is-invalid': submitted && f.birthDate.errors }">
 
               <div class="input-group-append">
@@ -112,19 +110,21 @@
 
           <div class="form-group">
             <label for="exampleInputPassword1">Mobile</label>
-            <input type="mobile" class="form-control" formControlName="mobile" id="mobile" placeholder="Enter Mobile"
-              required [ngClass]="{ 'is-invalid': submitted && f.mobile.errors }">
-            <div *ngIf="submitted && f.mobile.errors" class="invalid-feedback">
+            <input type="mobile" class="form-control" formControlName="mobile" id="mobile"
+              placeholder="Enter Mobile Number" required [ngClass]="{ 'is-invalid': submitted && f.mobile.errors }">
+            <div *ngIf="submitted && f.mobile.errors && f.mobile.touched" class="invalid-feedback">
               <div *ngIf="f.mobile.errors.required">Mobile is required</div>
+              <div *ngIf="f.mobile.errors.pattern">Mobile must have 10 digit.</div>
             </div>
           </div>
 
           <div class="form-group">
             <label for="exampleInputPassword1">City</label>
             <input type="city" class="form-control" formControlName="city" id="city" placeholder="Enter City" required
-              [ngClass]="{ 'is-invalid': submitted && f.city.errors }">
-            <div *ngIf="submitted && f.city.errors" class="invalid-feedback">
+              [ngClass]="{ 'is-invalid': submitted && f.mobile.errors }">
+            <div *ngIf="submitted && f.city.errors && f.city.touched" class="invalid-feedback">
               <div *ngIf="f.city.errors.required">City is required</div>
+
             </div>
           </div>
 

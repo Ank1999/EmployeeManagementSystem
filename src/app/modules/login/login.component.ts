@@ -12,7 +12,7 @@ import { AuthenticationService } from 'src/app/authentication.service';
 export class LoginComponent implements OnInit {
 
   public loginForm !: FormGroup;
-
+ 
   loading = false;
   submitted = false;
 
@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
-      email: ['', [Validators.required, Validators.email]],
+      email: ['', [Validators.required, Validators.email,Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]],
       password: ['', [Validators.required, Validators.minLength(6)]],
     })
 
@@ -44,7 +44,8 @@ export class LoginComponent implements OnInit {
       .subscribe(res => {
 
         const user = res.find((a: any) => {
-          return a.email === this.loginForm.value.email && a.password === this.loginForm.value.password
+          return a.email === this.loginForm.value.email 
+          && a.password === this.loginForm.value.password
         });
 
         if (user) {

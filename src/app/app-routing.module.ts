@@ -24,8 +24,14 @@ const routes: Routes = [{
   },
   {
     path: 'register',
-    component: SignupComponent
-  }]
+    component: SignupComponent,
+  },
+  
+]
+},
+{
+  path: 'logout',
+  component: LoginComponent, canActivate: [AuthGuardGuard]
 },
 { path: '', redirectTo: 'manager/login', pathMatch: 'full' }];
 

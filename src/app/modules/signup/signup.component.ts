@@ -22,11 +22,11 @@ export class SignupComponent implements OnInit {
 
   ngOnInit(): void {
     this.signupForm = this.formBuilder.group({
-      email: ['', [Validators.required]],
+      email: ['', [Validators.required,Validators.email,Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]],
       firstName: ['', [Validators.required]],
       lastName: ['', [Validators.required]],
-      password: ['', [Validators.required]],
-      address: ['', [Validators.required, Validators.minLength(5)]],
+      password: ['', [Validators.required, Validators.minLength(6)]],
+      address: ['', [Validators.required, ]],
       birthdate: ['', [Validators.required]],
     })
   }
@@ -42,8 +42,8 @@ export class SignupComponent implements OnInit {
           console.log(res)
           alert("SignUp Successfull");
           this.signupForm.reset();
-          this.router.navigate(['/manager/login']);
-
+          this.router.navigate(['/user/dash']);
+          localStorage.setItem("isLoggedin","true");
 
         }, err => {
           alert("Something went wrong!!")

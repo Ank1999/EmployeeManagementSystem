@@ -20,7 +20,7 @@ export class DashboardComponent implements OnInit {
 
   empObj: EmployeeModel = new EmployeeModel();
 
-  model: any;
+  model: any ;
 
   empData !: any;
 
@@ -33,14 +33,12 @@ export class DashboardComponent implements OnInit {
 
   date: string = "";
 
-
   constructor(private router: Router,
     public formBuilder: FormBuilder,
     private httpClient: HttpClient,
     private empApi: EmployeeApiService,
   ) {
-
-   
+    
   }
 
  
@@ -53,7 +51,7 @@ export class DashboardComponent implements OnInit {
       lastName: ['', [Validators.required]],
       address: ['', [Validators.required]],
       birthDate: ['', [Validators.required]],
-      mobile: ['', [Validators.required]],
+      mobile: ['', [Validators.required,Validators.pattern(new RegExp("[0-9 ]{10}"))]],
       city: ['', [Validators.required]],
     })
 
@@ -62,6 +60,9 @@ export class DashboardComponent implements OnInit {
     this.getAllEmployee();
   }
 
+  select(model:any){  
+    console.log(model);
+  }
 
 
   onDateSelect(event: any) {
@@ -119,6 +120,8 @@ export class DashboardComponent implements OnInit {
     this.showAdd = false;
     this.showUpdate = true;
 
+    // this.model = row.birthDate;
+
     this.empObj.id = row.id;
     this.addForm.controls['firstName'].setValue(row.firstName);
     this.addForm.controls['lastName'].setValue(row.lastName);
@@ -129,6 +132,9 @@ export class DashboardComponent implements OnInit {
   }
 
   updateEmployee() {
+
+    this.submitted = true;
+
     this.empObj.firstName = this.addForm.value.firstName;
     this.empObj.lastName = this.addForm.value.lastName;
     this.empObj.address = this.addForm.value.address;
@@ -136,6 +142,7 @@ export class DashboardComponent implements OnInit {
     this.empObj.mobile = this.addForm.value.mobile;
     this.empObj.city = this.addForm.value.city;
 
+    if (this.addForm.valid) {
     this.empApi.updateEmployee(this.empObj, this.empObj.id).subscribe(res => {
       alert("Updated successfully");
       let ref = document.getElementById('cancel');
@@ -145,6 +152,7 @@ export class DashboardComponent implements OnInit {
     }, err => {
       alert("Something went wrong");
     })
+  }
   }
 
 
