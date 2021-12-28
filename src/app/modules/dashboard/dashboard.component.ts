@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, ContentChild, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { NgbDate } from '@ng-bootstrap/ng-bootstrap';
 
 import { EmployeeModel } from '../employee model';
 import { EmployeeApiService } from '../employee-api.service';
@@ -26,12 +27,16 @@ export class DashboardComponent implements OnInit {
 
   todayDate: Date = new Date();
 
+  datePipe: DatePipe = new DatePipe('en-Us');
+
   showAdd !: boolean;
   showUpdate !: boolean;
 
   submitted = false;
 
   date: string = "";
+
+  selectedDate !:NgbDate|null;
 
   constructor(private router: Router,
     public formBuilder: FormBuilder,
@@ -69,7 +74,7 @@ export class DashboardComponent implements OnInit {
     let year = event.year;
     let month = event.month <= 9 ? '0' + event.month : event.month;;
     let day = event.day <= 9 ? '0' + event.day : event.day;;
-    this.date = day + "-" + month + "-" + year;
+    this.date = year + "-" + month + "-" + day;
   } 
 
 
@@ -126,7 +131,10 @@ export class DashboardComponent implements OnInit {
     this.addForm.controls['firstName'].setValue(row.firstName);
     this.addForm.controls['lastName'].setValue(row.lastName);
     this.addForm.controls['address'].setValue(row.address);
-    this.addForm.controls['birthDate'].setValue(row.birthDate);
+    let updatedDate= this.datePipe.transform(row.birthDate,'dd-MM-yyyy');
+    let currentDate:Date= new Date(updatedDate+" 00:00:00");
+    this.selectedDate= new NgbDate(currentDate.getFullYear(),currentDate.getMonth(),currentDate.getDate());
+    this.addForm.controls['birthDate'].setValue(this.selectedDate);
     this.addForm.controls['mobile'].setValue(row.mobile);
     this.addForm.controls['city'].setValue(row.city);
   }

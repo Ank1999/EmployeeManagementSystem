@@ -92,9 +92,9 @@
             <label for="exampleInputEmail1">Birth Date</label>
             <div class="input-group">
               <input type="calender" class="form-control" (dateSelect)="onDateSelect($event)" id="birthDate"
-                formControlName="birthDate" [(ngModel)]="model" (ngModelChange)="select(model)"
-                placeholder="Enter BirthDate" required ngbDatepicker #d="ngbDatepicker"
-                [minDate]="{day: 1, month: 1,year: 1960 }" [maxDate]="{day: 28, month: 11, year: 2021}"
+                formControlName="birthDate" 
+                placeholder="Enter BirthDate" required ngbDatepicker #d="ngbDatepicker" [readonly]="true"
+                [minDate]="{day: 1, month: 1,year: 1960 }"  [maxDate]="{day: 28, month: 12,year: 2021 }" 
                 [ngClass]="{ 'is-invalid': submitted && f.birthDate.errors }">
 
               <div class="input-group-append">
