@@ -8,40 +8,46 @@
   </div>
 </nav>
 
-<table class="table mt-3">
-  <thead>
-    <tr>
-      <th scope="col">Id</th>
-      <th scope="col">First Name</th>
-      <th scope="col">Last Name</th>
-      <th scope="col">Address</th>
-      <th scope="col">Birth Date</th>
-      <th scope="col">Mobile</th>
-      <th scope="col">City</th>
-      <th scope="col">Action</th>
+<div style="height: 550px;overflow:auto">
+  <table class="table mt-3 table-bordered ">
+    <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">First Name</th>
+        <th scope="col">Last Name</th>
+        <th scope="col">Address</th>
+        <th scope="col">Birth Date</th>
+        <th scope="col">Mobile</th>
+        <th scope="col">City</th>
+        <th scope="col">Action</th>
 
-    </tr>
-  </thead>
+      </tr>
+    </thead>
 
-  <tbody>
-    <tr *ngFor="let row of empData">
-      <td>{{row.id}}</td>
-      <td>{{row.firstName}}</td>
-      <td>{{row.lastName}}</td>
-      <td>{{row.address}}</td>
-      <td>{{row.birthDate}}</td>
-      <td>{{row.mobile}}</td>
-      <td>{{row.city}}</td>
+    <tbody>
+      <tr *ngFor="let row of empData">
 
-      <td>
-        <button (click)="onUpdate(row)" type="button" data-toggle="modal" data-target="#exampleModal"
-          class="btn btn-info">Edit</button>
-        <button (click)="deleteEmployee(row)" class="btn btn-danger mx-3">Delete</button>
-      </td>
+        <td>{{row.id}}</td>
+        <td>{{row.firstName}}</td>
+        <td>{{row.lastName}}</td>
+        <td>{{row.address}}</td>
+        <td>{{row.birthDate}}</td>
+        <td>{{row.mobile}}</td>
+        <td>{{row.city}}</td>
 
-    </tr>
-  </tbody>
-</table>
+        <td>
+          <button (click)="onUpdate(row)" type="button" data-toggle="modal" data-target="#exampleModal"
+            class="btn btn-info">Edit</button>
+          <button (click)="deleteEmployee(row)" class="btn btn-danger mx-3">Delete</button>
+        </td>
+
+      </tr>
+    </tbody>
+
+  </table>
+</div>
+
+
 
 
 <!-- Modal -->
@@ -89,17 +95,17 @@
           <div class="form-group">
             <label for="exampleInputEmail1">Birth Date</label>
             <div class="input-group">
-              <input type="birthDate" class="form-control" id="birthDate" formControlName="birthDate"
-                placeholder="Enter BirthDate" required [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker"
+              <input type="calender" class="form-control" (dateSelect)="onDateSelect($event)" id="birthDate"
+                formControlName="birthDate" placeholder="Enter BirthDate" required ngbDatepicker #d="ngbDatepicker"
                 [ngClass]="{ 'is-invalid': submitted && f.birthDate.errors }">
 
               <div class="input-group-append">
                 <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button"><i
                     class="fa fa-calendar"></i></button>
-              </div> 
+              </div>
               <div *ngIf="submitted && f.birthDate.errors" class="invalid-feedback">
                 <div *ngIf="f.birthDate.errors.required">Birth Date is required</div>
-              </div> 
+              </div>
             </div>
 
           </div>

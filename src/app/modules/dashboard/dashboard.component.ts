@@ -1,8 +1,9 @@
 import { DatePipe } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, ContentChild, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+
 import { EmployeeModel } from '../employee model';
 import { EmployeeApiService } from '../employee-api.service';
 
@@ -23,22 +24,26 @@ export class DashboardComponent implements OnInit {
 
   empData !: any;
 
-  todayDate : Date = new Date();
+  todayDate: Date = new Date();
 
   showAdd !: boolean;
   showUpdate !: boolean;
 
   submitted = false;
 
+  date: string = "";
+
+
   constructor(private router: Router,
     public formBuilder: FormBuilder,
     private httpClient: HttpClient,
-    private empApi: EmployeeApiService
+    private empApi: EmployeeApiService,
   ) {
 
-
+   
   }
 
+ 
   get f() { return this.addForm.controls; }
 
 
@@ -53,11 +58,23 @@ export class DashboardComponent implements OnInit {
     })
 
 
+
     this.getAllEmployee();
   }
 
+
+
+  onDateSelect(event: any) {
+    let year = event.year;
+    let month = event.month <= 9 ? '0' + event.month : event.month;;
+    let day = event.day <= 9 ? '0' + event.day : event.day;;
+    this.date = day + "-" + month + "-" + year;
+  } 
+
+
+
   clickAddEmp() {
-    this.addForm.reset();
+    this.addForm.reset(); 
     this.showAdd = true;
     this.showUpdate = false;
   }
@@ -69,23 +86,23 @@ export class DashboardComponent implements OnInit {
     this.empObj.firstName = this.addForm.value.firstName;
     this.empObj.lastName = this.addForm.value.lastName;
     this.empObj.address = this.addForm.value.address;
-    this.empObj.birthDate = this.addForm.value.birthDate;
+    this.empObj.birthDate = this.date;
     this.empObj.mobile = this.addForm.value.mobile;
     this.empObj.city = this.addForm.value.city;
 
-    if(this.addForm.valid){
+    if (this.addForm.valid) {
       this.empApi.postEmployee(this.empObj)
-      .subscribe(res => {
-        console.log(res);
-        alert("Employee added successfully");
+        .subscribe(res => {
+          console.log(res);
+          alert("Employee added successfully");
 
-        let ref = document.getElementById('cancel');
-        ref?.click();
-        this.addForm.reset();
-        this.getAllEmployee();
-      }, err => {
-        alert("Something went wrong");
-      })
+          let ref = document.getElementById('cancel');
+          ref?.click();
+          this.addForm.reset();
+          this.getAllEmployee();
+        }, err => {
+          alert("Something went wrong");
+        })
     }
   }
 
@@ -115,7 +132,7 @@ export class DashboardComponent implements OnInit {
     this.empObj.firstName = this.addForm.value.firstName;
     this.empObj.lastName = this.addForm.value.lastName;
     this.empObj.address = this.addForm.value.address;
-    this.empObj.birthDate = this.addForm.value.birthDate;
+    this.empObj.birthDate = this.date;
     this.empObj.mobile = this.addForm.value.mobile;
     this.empObj.city = this.addForm.value.city;
 
