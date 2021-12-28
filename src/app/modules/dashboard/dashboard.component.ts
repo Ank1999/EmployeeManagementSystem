@@ -131,8 +131,10 @@ export class DashboardComponent implements OnInit {
     this.addForm.controls['firstName'].setValue(row.firstName);
     this.addForm.controls['lastName'].setValue(row.lastName);
     this.addForm.controls['address'].setValue(row.address);
-    let updatedDate= this.datePipe.transform(row.birthDate,'dd-MM-yyyy');
+    console.log("Before Date=",row.birthDate); 
+    let updatedDate= this.datePipe.transform(row.birthDate,'yyyy-MM-dd');
     let currentDate:Date= new Date(updatedDate+" 00:00:00");
+    console.log("Updated Date=",updatedDate); 
     this.selectedDate= new NgbDate(currentDate.getFullYear(),currentDate.getMonth(),currentDate.getDate());
     this.addForm.controls['birthDate'].setValue(this.selectedDate);
     this.addForm.controls['mobile'].setValue(row.mobile);
